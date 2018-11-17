@@ -71,3 +71,9 @@ geckodriver
 ./test_files/
 
 ./pages/page.py
+
+.__*.py
+.__*.*
+._*.*
+._*
+

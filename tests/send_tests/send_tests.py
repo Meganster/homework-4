@@ -15,4 +15,6 @@ class SendTestEmailToMe(BaseSend):
 
         self.assertEqual(self.email_sending_form.checkMessageSent(), True)
 
+        self.email_sending_form.check_recipients(2)
+
         #self.email_sending_form.closeMessageSent()

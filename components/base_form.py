@@ -40,17 +40,6 @@ class BaseForm(Component):
         except WebDriverException:
             print 'destination input not found'
 
-
-    def add_destionation_email(self, emailAdd):
-        try:
-            dest_input = WebDriverWait(self.driver, 1) \
-                .until(lambda driver: driver.find_elements_by_xpath(self.DESTINATION_INPUT)[0])
-
-            dest_input.send_keys(emailAdd)
-            print 'new destination email is added'
-        except WebDriverException:
-            print 'new destination email not added'
-
     def open_writing_letter(self):
         try:
             WebDriverWait(self.driver, 5) \
@@ -134,7 +123,7 @@ class BaseForm(Component):
         element = self.driver.find_element_by_xpath(self.MESSAGE_FIELD)
         ActionChains(self.driver).move_to_element(element).click().perform()
 
-        # Клик на поле темы
+    # Клик на поле темы
     def click_on_subject_field(self):
         element = self.driver.find_element_by_xpath(self.SUBJECT_FIELD)
         ActionChains(self.driver).move_to_element(element).click().perform()

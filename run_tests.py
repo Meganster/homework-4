@@ -11,7 +11,7 @@ from tests.send_tests.send_tests import *
 
 if __name__ == '__main__':
     suite = unittest.TestSuite((
-        unittest.makeSuite(AttachTestLess25MbWithoutCloud2)
+        unittest.makeSuite(SendTestEmailToMe)
     ))
     result = unittest.TextTestRunner().run(suite)
     sys.exit(not result.wasSuccessful())()

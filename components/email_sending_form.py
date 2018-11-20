@@ -11,7 +11,7 @@ from components.base_form import BaseForm
 
 class EmailSendingForm(BaseForm):
     # file attach elements
-    FILE_ATTACH_INPUT = '//input[@data-test-id="attach-file"]'
+    SEND_EMAIL = '//span[@data-id="contact-to-{}"]'
     FILE_ATTACH_CHECK = '//div[@class="container_progress--2uptg"]'
     FILE_ATTACH_CLOUD_ICON = '//div[@class="container_link--bxJaw"]'
     # FILE_ATTACH_CHECK_NOT_CLOUD = '//div[@class="item--3fh5V"]/div/div'

@@ -4,7 +4,7 @@ from tests.base_test import BaseTest
 
 
 class BaseSend(BaseTest):
-    TEST_FILE_DIR = './test_files/'
+    TEXT = ''
 
     def test(self):
         BaseTest.test(self)

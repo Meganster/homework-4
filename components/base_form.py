@@ -40,6 +40,17 @@ class BaseForm(Component):
         except WebDriverException:
             print 'destination input not found'
 
+
+    def add_destionation_email(self, emailAdd):
+        try:
+            dest_input = WebDriverWait(self.driver, 1) \
+                .until(lambda driver: driver.find_elements_by_xpath(self.DESTINATION_INPUT)[0])
+
+            dest_input.send_keys(emailAdd)
+            print 'new destination email is added'
+        except WebDriverException:
+            print 'new destination email not added'
+
     def open_writing_letter(self):
         try:
             WebDriverWait(self.driver, 5) \

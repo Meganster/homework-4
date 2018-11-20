@@ -5,6 +5,7 @@ from tests.base_test import BaseTest
 
 class BaseSend(BaseTest):
     TEXT = 'SendTestEmailToMe'
+    SUBJECT = 'Test subject'
 
     def test(self):
         BaseTest.test(self)

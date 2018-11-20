@@ -40,6 +40,16 @@ class BaseForm(Component):
         except WebDriverException:
             print 'destination input not found'
 
+    def set_destionation_email(self, dest_mail):
+        try:
+            dest_input = WebDriverWait(self.driver, 1) \
+                .until(lambda driver: driver.find_elements_by_xpath(self.DESTINATION_INPUT)[0])
+
+            dest_input.send_keys(dest_mail)
+            print 'destination email is set'
+        except WebDriverException:
+            print 'destination input not found'
+
     def open_writing_letter(self):
         try:
             WebDriverWait(self.driver, 5) \
@@ -93,8 +103,6 @@ class BaseForm(Component):
         except WebDriverException:
             print 'msg_sent unable to close'
 
-        # ico:16-close
-
     def show_message_incoming(self):
         try:
             elem = self.driver.find_element_by_xpath(self.INCOMING_MSG_HREF)
@@ -127,7 +135,6 @@ class BaseForm(Component):
     def click_on_subject_field(self):
         element = self.driver.find_element_by_xpath(self.SUBJECT_FIELD)
         ActionChains(self.driver).move_to_element(element).click().perform()
-
 
     # Ввод текста
     def write_some_text(self, text):

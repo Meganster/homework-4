@@ -40,7 +40,7 @@ class BaseForm(Component):
         except WebDriverException:
             print 'destination input not found'
 
-    def set_destionation_email(self, dest_mail):
+    def add_destionation_email(self, dest_mail):
         try:
             dest_input = WebDriverWait(self.driver, 1) \
                 .until(lambda driver: driver.find_elements_by_xpath(self.DESTINATION_INPUT)[0])

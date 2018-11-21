@@ -26,7 +26,8 @@ class BaseForm(Component):
     SENT_MSG_HREF = '//a[@data-qa-id="500000"]'
     DRAFT_MSG_HREF = '//a[@data-qa-id="500001"]'
     CLOSE_MSG_BTN ='//button[@data-test-id="close"]'
-
+    ADD_COPY_EMAIL_BTN = '//button[@data-test-id="cc"]'
+    COPY_FIELD = '//div[@data-test-id="cc"]'
 
     DESTINATION_MAIL = 'park.test.testovich@mail.ru\n'
 
@@ -60,7 +61,6 @@ class BaseForm(Component):
             print 'is not clickable element'
 
     def click_send_button(self):
-
         try:
             print 'clicking send message button'
             button = WebDriverWait(self.driver, 1) \
@@ -83,6 +83,16 @@ class BaseForm(Component):
             ActionChains(self.driver).move_to_element(elem).click().perform()
         except WebDriverException:
             print 'no save msg button'
+
+    def click_copy_button(self):
+        try:
+            print 'clicking copy email button'
+            button = WebDriverWait(self.driver, 1) \
+                .until(lambda driver: driver.find_element_by_xpath(self.ADD_COPY_EMAIL_BTN))
+            button.click()
+            print 'clicked!'
+        except WebDriverException:
+            print 'no copy email button'
 
     def checkMessageSent(self):
         try:
@@ -134,6 +144,11 @@ class BaseForm(Component):
     # Клик на поле темы
     def click_on_subject_field(self):
         element = self.driver.find_element_by_xpath(self.SUBJECT_FIELD)
+        ActionChains(self.driver).move_to_element(element).click().perform()
+
+    # Клик на поле копии письма
+    def click_on_copy_field(self):
+        element = self.driver.find_element_by_xpath(self.COPY_FIELD)
         ActionChains(self.driver).move_to_element(element).click().perform()
 
     # Ввод текста

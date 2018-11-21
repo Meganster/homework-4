@@ -74,3 +74,6 @@ class EmailSendingForm(BaseForm):
         self.click_on_message_field()
         self.write_some_text(message)
 
+    def set_copy_email(self):
+        self.click_on_copy_field()
+        self.write_some_text(self.MY_EMAIL)

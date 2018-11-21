@@ -81,7 +81,7 @@ class EmailSendingForm(BaseForm):
     def checkMessageSentBySubject(self, subject):
         return self.find_letter_by_subject(subject)
 
-    def set_copy_email_correct_recipient(self, email):
+    def set_copy_email_correct_recipient(self):
         self.click_on_copy_field()
         self.write_some_text(self.CORRECT_EMAILS[0])
 

@@ -18,7 +18,7 @@ class EmailSendingForm(BaseForm):
     def set_group_correct_recipients(self):
         emails_str = ""
         for i in range(len(self.CORRECT_EMAILS)):
-            emailsStr += self.CORRECT_EMAILS[i] + "\n"
+            emails_str += self.CORRECT_EMAILS[i] + "\n"
         self.add_destionation_email(emails_str)
 
     def check_group_correct_recipients(self):
@@ -28,7 +28,9 @@ class EmailSendingForm(BaseForm):
             clean_email_from_ui = re.sub('\s+', '', span.get_attribute('innerHTML'))
             clean_email_from_ui = re.sub(',', '', clean_email_from_ui)
             if clean_email_from_ui != self.CORRECT_EMAILS[i]:
+                print 'not correct recipients'
                 return False
+        print 'correct recipients'
         return True
 
     def set_correct_recipient(self):
@@ -40,7 +42,9 @@ class EmailSendingForm(BaseForm):
         clean_email_from_ui = re.sub('\s+', '', span.get_attribute('innerHTML'))
         clean_email_from_ui = re.sub(',', '', clean_email_from_ui)
         if clean_email_from_ui != self.CORRECT_EMAILS[0]:
+            print 'not correct recipient'
             return False
+        print 'correct recipient'
         return True
 
     def set_group_wrong_recipients(self):
@@ -50,9 +54,14 @@ class EmailSendingForm(BaseForm):
         self.add_destionation_email(emails_str)
 
     def check_wrong_emails(self):
-        span = WebDriverWait(self.driver, 2) \
-            .until(lambda driver: driver.find_element_by_xpath(self.INVALID_EMAIL))
-        return True
+        try:
+            div_error = WebDriverWait(self.driver, 2) \
+                .until(lambda driver: driver.find_element_by_xpath(self.INVALID_EMAIL))
+            print 'error window found'
+            return True
+        except WebDriverException:
+            print 'error window not found'
+            return False
 
     def set_wrong_recipient(self):
         self.add_destionation_email(self.WRONG_EMAILS[0])

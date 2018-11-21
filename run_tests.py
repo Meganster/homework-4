@@ -16,7 +16,9 @@ if __name__ == '__main__':
         #unittest.makeSuite(SendTestEmailToGroupCorrectEmails),
         #unittest.makeSuite(SendTestEmailToWrongEmail),
         #unittest.makeSuite(SendTestEmailToGroupWrongEmails),
-        unittest.makeSuite(SendTestEmailToMeWithCopy)
+        #unittest.makeSuite(SendTestEmailToMeWithCopy),
+        unittest.makeSuite(SendTestEmailToCorrectEmailWithCopy),
+        #unittest.makeSuite(SendTestEmailToGroupWrongEmailsWithCopy)
     ))
     result = unittest.TextTestRunner().run(suite)
     sys.exit(not result.wasSuccessful())()

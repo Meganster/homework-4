@@ -15,7 +15,8 @@ class SendTestEmailToMe(BaseSend):
 
         self.assertEqual(self.email_sending_form.checkMessageSent(), True)
         self.email_sending_form.closeMessageSent()
-        self.email_sending_form.show_message_incoming()
+        self.email_sending_form.click_incoming_emails_button()
+        self.assertEqual(self.email_sending_form.checkMessageSentBySubject(self.SUBJECT), True)
 
 class SendTestEmailToCorrectEmail(BaseSend):
     def test(self):
@@ -86,4 +87,5 @@ class SendTestEmailToMeWithCopy(BaseSend):
 
         self.assertEqual(self.email_sending_form.checkMessageSent(), True)
         self.email_sending_form.closeMessageSent()
-        self.email_sending_form.show_message_incoming()
+        self.email_sending_form.click_incoming_emails_button()
+        self.assertEqual(self.email_sending_form.checkMessageSentBySubject(self.SUBJECT), True)

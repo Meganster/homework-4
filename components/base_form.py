@@ -29,6 +29,8 @@ class BaseForm(Component):
     ADD_COPY_EMAIL_BTN = '//button[@data-test-id="cc"]'
     COPY_FIELD = '//div[@data-test-id="cc"]'
 
+    MSG_SUBJECT = '//a[@data-qa-id="letter-item:subject:{}"]'
+
     DESTINATION_MAIL = 'park.test.testovich@mail.ru\n'
 
     def set_destionation_email(self):
@@ -93,6 +95,16 @@ class BaseForm(Component):
             print 'clicked!'
         except WebDriverException:
             print 'no copy email button'
+
+    def click_incoming_emails_button(self):
+        try:
+            print 'clicking incoming emails button'
+            button = WebDriverWait(self.driver, 1) \
+                .until(lambda driver: driver.find_element_by_xpath(self.INCOMING_MSG_HREF))
+            button.click()
+            print 'clicked!'
+        except WebDriverException:
+            print 'no incoming emails button'
 
     def checkMessageSent(self):
         try:
@@ -159,3 +171,10 @@ class BaseForm(Component):
     def get_text(self):
         return self.driver.find_element_by_xpath(self.MESSAGE_FIELD).get_attribute('innerHTML')
 
+    def find_letter_by_subject(self, subject): 
+        try:
+            self.driver.find_element_by_xpath(self.MSG_SUBJECT.format(subject))
+            return True
+        except WebDriverException:
+            print 'not find letter with subject: ' + subject
+            return False

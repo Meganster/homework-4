@@ -125,6 +125,7 @@ class BaseForm(Component):
         except WebDriverException:
             print 'msg_sent unable to close'
 
+    # shit that does not work
     def show_message_incoming(self):
         try:
             elem = self.driver.find_element_by_xpath(self.INCOMING_MSG_HREF)

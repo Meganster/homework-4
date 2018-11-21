@@ -80,3 +80,14 @@ class EmailSendingForm(BaseForm):
 
     def checkMessageSentBySubject(self, subject):
         return self.find_letter_by_subject(subject)
+
+    def set_copy_email_correct_recipient(self, email):
+        self.click_on_copy_field()
+        self.write_some_text(self.CORRECT_EMAILS[0])
+
+    def set_copy_email_group_wrong_recipients(self, emails):
+        emails_str = ""
+        for i in range(len(self.WRONG_EMAILS)):
+            emails_str += self.WRONG_EMAILS[i] + "\n"
+        self.click_on_copy_field()
+        self.write_some_text(emails_str)

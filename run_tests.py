@@ -11,7 +11,9 @@ from tests.send_tests.send_tests import *
 
 if __name__ == '__main__':
     suite = unittest.TestSuite((
-        unittest.makeSuite(SendTestEmailToMe)
+        unittest.makeSuite(SendTestEmailToMe),
+        unittest.makeSuite(SendTestEmailToCorrectEmail),
+        unittest.makeSuite(SendTestEmailToGroupCorrectEmails)
     ))
     result = unittest.TextTestRunner().run(suite)
     sys.exit(not result.wasSuccessful())()

@@ -46,7 +46,7 @@ class BaseForm(Component):
                 .until(lambda driver: driver.find_elements_by_xpath(self.DESTINATION_INPUT)[0])
 
             dest_input.send_keys(destination_email)
-            print 'destination email is set'
+            print 'destination email is added'
         except WebDriverException:
             print 'destination input not found'
 

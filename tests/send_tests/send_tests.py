@@ -14,7 +14,7 @@ class SendTestEmailToMe(BaseSend):
         self.email_sending_form.click_send_button()
 
         self.assertEqual(self.email_sending_form.checkMessageSent(), True)
-        self.email_sending_form.closeMessageSent()
+        self.email_sending_form.click_close_msg_sent_button()
         self.email_sending_form.click_incoming_emails_button()
         self.assertEqual(self.email_sending_form.checkMessageSentBySubject(self.SUBJECT), True)
 
@@ -86,7 +86,7 @@ class SendTestEmailToMeWithCopy(BaseSend):
         self.email_sending_form.click_send_button()
 
         self.assertEqual(self.email_sending_form.checkMessageSent(), True)
-        self.email_sending_form.closeMessageSent()
+        self.email_sending_form.click_close_msg_sent_button()
         self.email_sending_form.click_incoming_emails_button()
         self.assertEqual(self.email_sending_form.checkMessageSentBySubject(self.SUBJECT), True)
 
@@ -105,7 +105,7 @@ class SendTestEmailToCorrectEmailWithCopy(BaseSend):
         self.email_sending_form.click_send_button()
 
         self.assertEqual(self.email_sending_form.checkMessageSent(), True)
-        self.email_sending_form.closeMessageSent()
+        self.email_sending_form.click_close_msg_sent_button()
         self.email_sending_form.click_incoming_emails_button()
         self.assertEqual(self.email_sending_form.checkMessageSentBySubject(self.SUBJECT), True)
 

@@ -14,6 +14,7 @@ class BaseForm(Component):
     SEND_LETTER_BTN = '//span[@data-qa-id="send"]'
     SAVE_LETTER_BTN = '//span[@data-qa-id="save"]'
     CANCEL_LETTER_BTN = '//span[@data-qa-id="cancel"]'
+    CLOSE_MSG_SENT_BTN = '//span[@data-qa-id="close"]'
 
     MSG_SENT_LINK = '//a[@data-qa-id="is-sent"]'
     # DESTINATION_INPUT = '//div[@class="contactsContainer--3RMuQ"]/div/label/div/div/input'
@@ -105,6 +106,16 @@ class BaseForm(Component):
             print 'clicked!'
         except WebDriverException:
             print 'no incoming emails button'
+
+    def click_close_msg_sent_button(self):
+        try:
+            print 'clicking close msg sent button'
+            button = WebDriverWait(self.driver, 1) \
+                .until(lambda driver: driver.find_element_by_xpath(self.CLOSE_MSG_SENT_BTN))
+            button.click()
+            print 'clicked!'
+        except WebDriverException:
+            print 'no  close msg sent button'
 
     def checkMessageSent(self):
         try:

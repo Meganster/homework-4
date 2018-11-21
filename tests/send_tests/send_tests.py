@@ -124,4 +124,3 @@ class SendTestEmailToGroupWrongEmailsWithCopy(BaseSend):
         self.email_sending_form.click_send_button()
 
         self.assertEqual(self.email_sending_form.check_wrong_emails(), True)
-        self.assertEqual(self.email_sending_form.checkMessageSentBySubject(self.SUBJECT), True)
